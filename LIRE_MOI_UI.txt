@@ -1,0 +1,2 @@
+Version Liquid Glass + MIDI 2.1.
+Consultez LIRE_MOI_MIDI.txt pour installer, compiler et utiliser cette version.

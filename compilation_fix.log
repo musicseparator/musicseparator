@@ -1,0 +1,39 @@
+﻿**********************
+Début de la transcription Windows PowerShell
+Heure de début : 20260913043807
+Nom d'utilisateur : OrdifixeJulie\LAGARRIGUE Julie
+Utilisateur runAs :  OrdifixeJulie\LAGARRIGUE Julie
+Nom de la configuration : 
+Ordinateur : ORDIFIXEJULIE (Microsoft Windows NT 10.0.26200.0)
+Application hôte : powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\MusicSeparator\rebuild.ps1
+ID de processus : 3372
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Modele voix/batterie/basse/guitare/piano deja installe.
+Compilation du correctif et des tests...
+Version MSBuild 18.10.1-1.26427.6+3cd27c13e pour .NET Framework
+
+  Automatic MOC and UIC for target MusicSeparator
+  MusicSeparator.vcxproj -> C:\MusicSeparator\build\Release\MusicSeparator.exe
+        Copying models folder   Copying yt-dlp.exe      Copying ONNX Runtime + DirectML runtime files
+Version MSBuild 18.10.1-1.26427.6+3cd27c13e pour .NET Framework
+
+  Automatic MOC for target MixerDeviceTests
+  MixerDeviceTests.vcxproj -> C:\MusicSeparator\build\Release\MixerDeviceTests.exe
+Version MSBuild 18.10.1-1.26427.6+3cd27c13e pour .NET Framework
+
+  SeparationMathTests.vcxproj -> C:\MusicSeparator\build\Release\SeparationMathTests.exe
+MixerDevice tests passed
+Separation math tests passed
+Compilation et tests termines. Lancement de la version corrigee.
+**********************
+Fin de la transcription Windows PowerShell
+Heure de fin : 20260913043815
+**********************

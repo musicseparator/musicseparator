@@ -1,0 +1,25 @@
+{
+  "name": "musicseparator",
+  "version-string": "1.0.0",
+  "description": "Windows desktop app that separates a song into stems (vocals, drums, bass, guitar, piano, other) using HTDemucs/MDX-Net ONNX models via ONNX Runtime.",
+  "dependencies": [
+    {
+      "name": "qtbase",
+      "default-features": true,
+      "features": [
+        "concurrent",
+        "gui",
+        "network",
+        "widgets"
+      ]
+    },
+    "qtmultimedia",
+    {
+      "name": "ffmpeg",
+      "default-features": true,
+      "features": [
+        "mp3lame"
+      ]
+    }
+  ]
+}

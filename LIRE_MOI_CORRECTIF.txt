@@ -1,0 +1,110 @@
+MISE A JOUR 2 — SEPARATION ET INSTRUMENTS
+
+Extraire dans C:\MusicSeparator et accepter Tout remplacer.
+Fermer l'application puis lancer RECOMPILER_ET_LANCER.cmd.
+Le lanceur installe un modele verifie (environ 136 Mo, Internet requis
+si aucun exemplaire compatible n'est present), recompile et lance les tests.
+La fenetre doit porter le titre Audio + Separation Fix 2.
+
+Resultat par defaut : Vocals, Drums, Bass, Guitar, Piano.
+Other est exclu du mixage et des nouveaux exports : les sons classes dans
+cette categorie ne sont pas redistribues aux autres pistes. Le resultat
+ne reconstitue donc pas forcement la totalite du morceau original.
+Les anciens fichiers exportes ne sont pas effaces.
+Le mode Vocals + Instrumental reste disponible, avec le meme modele.
+Ce modele ne fournit pas de pistes individuelles pour violon, saxophone,
+synthetiseur, etc. Le piano peut presenter des fuites et des artefacts.
+
+CORRECTIONS DE LA SEPARATION
+- Conversion stereo LRLR vers tenseur ONNX LLL...RRR... avant inference.
+- Conversion inverse de chaque sortie de l'IA avant mixage et export.
+- Validation des dimensions, du type float32 et du nombre de sorties.
+- Recuperation des noms d'entree/sortie dans le modele, sans les supposer.
+- Refus des valeurs NaN/Inf et des modeles incompatibles.
+- Fenetres de raccord a poids positifs : le premier sample n'est plus perdu.
+- Annulation verifiee avant chaque appel du modele.
+- Mode instruments selectionne par defaut, guitare/piano inclus.
+- Modele six sources identifie par son empreinte SHA256.
+- Erreurs d'allocation et exceptions du worker remontees dans l'interface.
+
+TESTS EFFECTUES ICI
+SeparationMathTests.cpp compile avec g++ C++20, -Wall -Wextra -Werror,
+AddressSanitizer et UndefinedBehaviorSanitizer : succes.
+LeakSanitizer desactive car incompatible avec l'environnement d'execution.
+Tests : canaux stereo, six sources distinctes, formes invalides, NaN,
+recouvrement, longueurs courtes/longues, premier/dernier sample, annulation.
+Le modele est simule pour ces tests de circulation des donnees.
+Aucune inference sur un vrai morceau ni compilation Windows executee ici.
+Les tests Qt du melangeur et les tests de separation sont executes par
+le lanceur sur votre PC avant ouverture de l'application.
+
+Si le resultat reste incorrect, envoyer compilation_fix.log et un extrait
+audio permettant de reproduire le probleme. Le correctif ne garantit pas
+une separation parfaite de chaque instrument.
+
+Sources techniques :
+https://huggingface.co/StemSplitio/htdemucs-6s-onnx
+https://huggingface.co/StemSplitio/htdemucs-6s-onnx/blob/main/infer.py
+https://github.com/facebookresearch/demucs
+
+Les corrections audio precedentes sont incluses ci-dessous.
+-----------------------------------------------------------
+
+MUSICSEPARATOR — CORRECTIF AUDIO
+
+INSTALLATION
+1. Fermer MusicSeparator.
+2. Extraire TOUT le contenu de ce ZIP dans le dossier existant du projet
+   (par exemple C:\MusicSeparator), au niveau de CMakeLists.txt et src.
+3. Accepter « Remplacer les fichiers ».
+4. Double-cliquer sur RECOMPILER_ET_LANCER.cmd.
+
+Le lanceur utilise votre installation de compilation existante et le dossier
+build. Il recompile, execute les tests du melangeur puis ouvre l'application.
+En cas d'echec, il ne lance pas l'ancien exe : consulter compilation_fix.log.
+Les modeles, les dependances third_party et les exports existants sont conserves.
+
+IMPORTANT
+Cette archive contient les sources corrigees, pas un nouvel executable Windows.
+Remplacer seulement les sources puis ouvrir l'ancien exe ne change rien.
+La compilation reste necessaire et demande votre environnement C++/Qt existant.
+Si votre compilation de Qt/vcpkg n'est pas encore terminee, il faut d'abord
+resoudre cette installation : cette archive ne contient pas ces dependances.
+
+CORRECTIONS
+- Declaration du melangeur comme flux sequentiel et calcul de bytesAvailable :
+  Qt peut maintenant voir les donnees PCM disponibles avant de commencer.
+- Retour du nombre exact d'octets lus, sans silence infini apres la fin.
+- Fin de lecture geree par le sink une fois les donnees en attente ecoulees.
+- Etat Play/Pause coherent avec les erreurs du moteur ; message en cas d'erreur.
+- Arret de la sortie AVANT liberation ou remplacement des buffers audio.
+- Protection du melange et du deplacement du curseur par le meme verrou.
+- Position de lecture alignee sur une trame audio complete.
+- Vidage des donnees en attente lors d'un seek, sans ancien son a la reprise.
+- Retour a la page du morceau : recharge effective du morceau original.
+- Nouvel import : suppression des anciennes pistes et remise a zero du lecteur.
+- Annulation d'import : resultat ignore a la fin du decodage ; le decodage
+  en cours termine avant la fermeture de l'ecran de progression.
+- Annulation YouTube : fermeture de la progression sans message d'erreur parasite.
+- Fin du reechantillonnage FFmpeg vidangee pour conserver les derniers samples.
+- Prise en charge des tableaux de canaux planaires au-dela de huit canaux.
+
+VERIFICATION
+Revue des sources et controle de l'archive effectues dans cet environnement.
+Pas de compilation Windows ni d'ecoute reelle effectuees ici : Qt/CMake et Windows
+ne sont pas disponibles dans cet environnement.
+Le lanceur compile et execute tests/MixerDeviceTests.cpp sur votre machine :
+PCM original, disponibilite des octets, pause/reprise, fin de flux, seek,
+gain, mute, solo, mono vers stereo, conversion Int16, reinitialisation.
+Ces tests ne remplacent pas un essai sur votre peripherique audio.
+
+A ESSAYER APRES LANCEMENT
+Importer un MP3/WAV, lire, mettre en pause, reprendre, deplacer le curseur,
+laisser finir et relancer. Puis separer et essayer Solo, Mute et Volume.
+Les boutons Play des pistes commandent le transport commun synchronise.
+Pour ecouter uniquement une piste, activer son bouton Solo.
+La separation IA et YouTube dependent toujours des modeles et outils installes.
+
+References techniques utilisees :
+https://doc.qt.io/qt-6/qiodevice.html
+https://doc.qt.io/qt-6/qaudiosink.html

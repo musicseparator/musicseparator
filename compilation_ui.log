@@ -1,0 +1,27 @@
+﻿**********************
+Début de la transcription Windows PowerShell
+Heure de début : 20260913115904
+Nom d'utilisateur : OrdifixeJulie\LAGARRIGUE Julie
+Utilisateur runAs :  OrdifixeJulie\LAGARRIGUE Julie
+Nom de la configuration : 
+Ordinateur : ORDIFIXEJULIE (Microsoft Windows NT 10.0.26200.0)
+Application hôte : powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\MusicSeparator\appliquer_ui.ps1
+ID de processus : 16388
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Configuration de Liquid Glass MIDI 2.1...
+
+Compilation de Liquid Glass MIDI 2.1...
+
+Liquid Glass MIDI 2.1 compile. Appearance propose les 10 palettes.
+**********************
+Fin de la transcription Windows PowerShell
+Heure de fin : 20260913120040
+**********************

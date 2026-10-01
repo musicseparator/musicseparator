@@ -1,0 +1,13 @@
+MusicSeparator fixes in this package
+
+- Audio playback now uses the Windows device preferred output format and resamples from the app's 44.1 kHz buffers in real time. This fixes machines whose output only accepts 48 kHz.
+- MixerDevice is now a sequential QIODevice and supports Float, Int16, Int32 and UInt8 output formats.
+- Playback failures now show a readable dialog instead of failing silently.
+- ONNX input/output channel layout is corrected: app PCM is interleaved but Demucs/MDX tensors are channel-major. This materially improves separation correctness.
+- Mute/solo interaction fixed (mute always wins).
+- Core play/pause/folder/save buttons use native Qt icons; Mute/Solo are visible M/S controls, so critical buttons no longer appear blank if SVG support is missing.
+- Qt Svg is explicitly linked and qtsvg is in vcpkg.json.
+- Deployment now has a vcpkg fallback that copies runtime DLLs and Qt plugin folders when windeployqt is unavailable.
+- Minor warnings cleaned up.
+
+Replace these files into C:\MusicSeparator, then reconfigure CMake and rebuild Release.

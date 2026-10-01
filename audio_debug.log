@@ -1,0 +1,118 @@
+20:28:54.593  === AudioEngine init ===
+20:28:54.606  output device: Odyssey G65B (NVIDIA High Definition Audio)
+20:28:54.629  format ok — floatOutput=1
+20:28:54.629  init OK — m_available=true
+20:29:10.069  loadOriginal — pcm.size=21837824 channels=2 sr=44100
+20:29:10.084    ptr=1cb04b12b40  pcm.size via ptr=21837824
+20:29:10.084  [MixerDevice] setTracks count=1 | track0 ptr=1cb04b12b40 pcm=21837824 ch=2
+20:29:10.085    totalFrames after setTracks=1.09189e+07
+20:29:10.085    sink state before suspend/stop: 2
+20:29:16.563  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0
+20:29:16.567    sink state: 2  error: 0
+20:29:16.593    → started fresh
+20:29:16.593    sink state after: 0  error: 0
+20:29:18.063  pause()
+20:29:19.053  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0
+20:29:19.054    sink state: 1  error: 0
+20:29:19.056    → resumed
+20:29:19.056    sink state after: 3  error: 0
+20:29:19.335  pause()
+20:29:19.679  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0
+20:29:19.679    sink state: 1  error: 0
+20:29:19.680    → resumed
+20:29:19.680    sink state after: 3  error: 0
+20:29:20.188  pause()
+20:29:20.455  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0
+20:29:20.455    sink state: 1  error: 0
+20:29:20.456    → resumed
+20:29:20.457    sink state after: 3  error: 0
+20:29:20.968  pause()
+20:32:15.426  === AudioEngine init ===
+20:32:15.439  output device: Odyssey G65B (NVIDIA High Definition Audio)
+20:32:15.461  format ok — floatOutput=1
+20:32:15.461  init OK
+20:32:32.079  loadOriginal — pcm.size=21837824 channels=2 sr=44100
+20:32:32.092    ptr=1c9ee1d4350  pcm.size via ptr=21837824
+20:32:32.093  [MixerDevice] setTracks count=1 | track0 ptr=1c9ee1d4350 pcm=21837824 ch=2
+20:32:32.093    totalFrames after setTracks=1.09189e+07
+20:32:32.093    sink state before stop: 2
+20:32:33.435  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=2 sinkError=0
+20:32:33.458    → started fresh (was stopped/idle)
+20:32:33.458    sink state after: 0  error: 0
+20:32:34.915  pause()
+20:32:35.109  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:35.110    → resumed (SuspendedState)
+20:32:35.111    sink state after: 3  error: 0
+20:32:35.296  pause()
+20:32:35.467  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:35.468    → resumed (SuspendedState)
+20:32:35.469    sink state after: 3  error: 0
+20:32:35.644  pause()
+20:32:35.843  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:35.844    → resumed (SuspendedState)
+20:32:35.845    sink state after: 3  error: 0
+20:32:36.035  pause()
+20:32:36.454  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:36.455    → resumed (SuspendedState)
+20:32:36.455    sink state after: 3  error: 0
+20:32:36.965  pause()
+20:32:37.482  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:37.483    → resumed (SuspendedState)
+20:32:37.483    sink state after: 3  error: 0
+20:32:40.704  pause()
+20:32:41.176  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:41.178    → resumed (SuspendedState)
+20:32:41.178    sink state after: 3  error: 0
+20:32:41.831  pause()
+20:32:42.322  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:42.325    → resumed (SuspendedState)
+20:32:42.325    sink state after: 3  error: 0
+20:32:43.476  pause()
+20:32:43.690  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:43.691    → resumed (SuspendedState)
+20:32:43.693    sink state after: 3  error: 0
+20:32:43.885  pause()
+20:32:44.061  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:44.062    → resumed (SuspendedState)
+20:32:44.062    sink state after: 3  error: 0
+20:32:44.222  pause()
+20:32:44.383  startPlayback — available=1 tracks=1 totalFrames=1.09189e+07 atEnd=0 sinkState=1 sinkError=0
+20:32:44.385    → resumed (SuspendedState)
+20:32:44.385    sink state after: 3  error: 0
+20:32:45.300  pause()
+20:33:14.145  === AudioEngine init ===
+20:33:14.159  output device: Odyssey G65B (NVIDIA High Definition Audio)
+20:33:14.178  format ok — floatOutput=1
+20:33:14.179  init OK
+20:34:54.910  loadOriginal — pcm.size=9641984 channels=2 sr=44100
+20:34:54.918    ptr=1dacbc23810  pcm.size via ptr=9641984
+20:34:54.918  [MixerDevice] setTracks count=1 | track0 ptr=1dacbc23810 pcm=9641984 ch=2
+20:34:54.918    totalFrames after setTracks=4.82099e+06
+20:34:54.918    sink state before stop: 2
+20:34:56.434  startPlayback — available=1 tracks=1 totalFrames=4.82099e+06 atEnd=0 sinkState=2 sinkError=0
+20:34:56.458    → started fresh (was stopped/idle)
+20:34:56.458    sink state after: 0  error: 0
+20:34:56.908  pause()
+20:34:57.106  startPlayback — available=1 tracks=1 totalFrames=4.82099e+06 atEnd=0 sinkState=1 sinkError=0
+20:34:57.106    → resumed (SuspendedState)
+20:34:57.108    sink state after: 3  error: 0
+20:34:57.289  pause()
+20:34:57.632  startPlayback — available=1 tracks=1 totalFrames=4.82099e+06 atEnd=0 sinkState=1 sinkError=0
+20:34:57.632    → resumed (SuspendedState)
+20:34:57.632    sink state after: 3  error: 0
+20:34:57.984  pause()
+20:35:47.533  setStemBuffers count=4
+20:35:47.544  [MixerDevice] setTracks count=4 | track0 ptr=1dadad75d00 pcm=9641984 ch=2 | track1 ptr=1dadad75d68 pcm=9641984 ch=2 | track2 ptr=1dadad75dd0 pcm=9641984 ch=2 | track3 ptr=1dadad75e38 pcm=9641984 ch=2
+20:35:47.544    totalFrames=4.82099e+06
+20:35:50.539  startPlayback — available=1 tracks=4 totalFrames=4.82099e+06 atEnd=0 sinkState=2 sinkError=0
+20:35:50.567    → started fresh (was stopped/idle)
+20:35:50.567    sink state after: 3  error: 0
+20:35:51.612  pause()
+20:35:51.895  startPlayback — available=1 tracks=4 totalFrames=4.82099e+06 atEnd=0 sinkState=1 sinkError=0
+20:35:51.895    → resumed (SuspendedState)
+20:35:51.898    sink state after: 3  error: 0
+20:35:52.505  pause()
+20:37:08.773  startPlayback — available=1 tracks=4 totalFrames=4.82099e+06 atEnd=0 sinkState=1 sinkError=0
+20:37:08.781    → resumed (SuspendedState)
+20:37:08.781    sink state after: 3  error: 0
+20:37:10.362  pause()

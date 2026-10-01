@@ -1,0 +1,97 @@
+MUSICSEPARATOR — LIQUID GLASS + MIDI 2.1
+
+INSTALLATION DANS VOTRE DOSSIER EXISTANT
+1. Fermez MusicSeparator.
+2. Extrayez TOUT le ZIP dans C:\MusicSeparator et acceptez les remplacements.
+3. Lancez INSTALLER_MIDI.cmd une seule fois : installation locale des moteurs
+   Transkun (piano) et Basic Pitch ONNX (autres instruments melodiques).
+   Prerequis : Python 3.10 ou 3.11 64 bits avec Python Launcher (python.org).
+   Le script utilise un environnement isole .midi-env et telecharge les modeles.
+   Prevoyez plusieurs Go libres et une connexion pour cette installation.
+4. Lancez APPLIQUER_UI.cmd pour recompiler et ouvrir la nouvelle application.
+   Le bas de la fenetre indique Liquid Glass · MIDI 2.1.
+
+PowerShell :
+& "C:\MusicSeparator\INSTALLER_MIDI.cmd"
+& "C:\MusicSeparator\APPLIQUER_UI.cmd"
+
+UTILISATION
+- Piste separee : bouton export a droite > Transcribe to MIDI.
+- Plusieurs pistes : format MIDI dans le mixeur > Export tracks.
+  All melodic tracks exporte les pistes melodiques ensemble, sans batterie.
+  All tracks inclut aussi la batterie si son module est installe.
+- Enregistrement d'un instrument seul : Transcribe source to MIDI sur la page
+  du fichier importe, puis Instrument > Piano, Voice, Guitar, Bass, etc.
+  Cette voie evite les artefacts d'une separation inutile.
+- Choisissez une destination .mid puis Transcribe and export.
+- Balanced est le reglage de reference pour Basic Pitch ; Detailed retient
+  davantage de notes faibles (et potentiellement davantage de fausses notes).
+  Conservative en retient moins. Ce reglage ne modifie pas Transkun ni ADTOF.
+- Le tempo regle la grille du fichier MIDI. Il n'est pas detecte automatiquement
+  et ne modifie ni les secondes d'attaque ni les durees. Pas de quantification.
+- CPU est le reglage compatible par defaut. CUDA est reserve a une installation
+  PyTorch CUDA distincte : l'installateur fourni installe volontairement CPU.
+- Cancel arrete la transcription. Une erreur ou une annulation avant validation
+  ne remplace pas votre ancien fichier. Les fichiers de travail sont temporaires.
+
+QUALITE ET LIMITES
+- Transkun 2.0.1 : reseau specialise piano, notes polyphoniques, nuances et
+  controleurs de pedale emis par le modele, fenetres chevauchantes natives.
+- Basic Pitch 0.4.0 / ONNX : accords et melodies, seuils ajustables, plages
+  adaptees a l'instrument. Les pitch bends sont retires pour eviter de detuner
+  les accords sur un meme canal MIDI. Les glissandi ne sont donc pas conserves
+  comme une courbe continue dans cette version.
+- Le silence initial de chaque piste est conserve pour l'alignement.
+- Le moteur utilise le signal de la piste avant les reglages mute/solo/volume.
+- MIDI contient des evenements musicaux, pas le timbre original ni les paroles.
+  Affectez un instrument virtuel a chaque piste dans Reaper ou votre DAW.
+- La transcription depend de la qualite du signal, des accords, des attaques,
+  des effets et de la separation. Des corrections manuelles restent possibles.
+  Aucun classement comparatif ne permet de promettre une transcription parfaite
+  ni de qualifier cette integration de meilleure solution universelle.
+- Tout l'audio reste sur votre PC. L'inference ne telecharge pas de modele.
+
+BATTERIE — MODULE OPTIONNEL DISTINCT
+INSTALLER_BATTERIE_MIDI.cmd installe ADTOF-pytorch et ses poids, APRES le moteur
+principal. Les poids proviennent du projet ADTOF sous CC BY-NC-SA 4.0 : ce module
+ne doit pas etre integre a une offre commerciale sans les droits necessaires.
+L'adaptateur est fourni, mais ni le modele ni le code ADTOF ne sont dans ce ZIP.
+Le reseau distingue cinq classes generales de percussion ; pas tous les
+instruments d'une batterie. Les nuances sont estimees depuis l'energie locale,
+pas depuis la force de frappe reelle. Le traitement utilise des segments de
+20 s avec 2 s de contexte pour limiter la memoire et preserver les frontieres.
+En l'absence du modele, l'export batterie echoue clairement ; aucun modele
+aleatoire ni remplacement par des notes melodiques n'est utilise.
+
+VERIFICATION EFFECTUEE
+- Compilation des composants Qt et rendu du dialogue MIDI sous Linux.
+- Verification syntaxique MainWindow avec doublures des dependances Windows/ONNX.
+- Inference reelle Transkun sur un extrait public de piano : MIDI de 144 notes
+  sur 12 secondes, relu avec succes. Cela n'est pas une mesure de precision.
+- Inference reelle des quatre profils melodiques sur signaux synthetiques.
+- Inference reelle ADTOF sur percussions synthetiques : MIDI canal percussion.
+- Tests des accords, pedales, conservation du timing a differents tempos,
+  stereo en opposition de phase, donnees invalides et frontieres de segments.
+- Tests du worker C++ : succes, chemins accentues, annulation, processus en
+  erreur et sortie invalide ; protection d'un export existant.
+- La compilation complete, l'installateur PowerShell et l'execution Windows
+  ne peuvent pas etre testes ici. Aucun executable Windows n'est inclus.
+
+EN CAS D'ERREUR
+Installation : envoyez installation_midi.log.
+Compilation : envoyez compilation_ui.log.
+Transcription : ouvrez Show Details dans la boite d'erreur et copiez le texte.
+Si le dossier de l'application est deplace, relancez INSTALLER_MIDI.cmd : un
+chemin d'interpreteur Python est enregistre dans midi/runtime.json.
+
+SOURCES / LICENCES
+Transkun : https://github.com/Yujia-Yan/Skipping-The-Frame-Level (MIT).
+Basic Pitch : https://github.com/spotify/basic-pitch (Apache 2.0).
+ADTOF : https://github.com/MZehren/ADTOF (CC BY-NC-SA 4.0).
+Port PyTorch : https://github.com/xavriley/ADTOF-pytorch
+Revision utilisee : 85c192e78f716ea0b111cc8a5ee4a8f6a3a4f8a9.
+Les dependances et modeles sont telecharges par leurs installateurs respectifs ;
+leurs avis de licence restent dans les paquets installes.
+Extrait de validation piano : resources/cut_liszt.mp3 du depot
+https://github.com/qiuqiangkong/piano_transcription_inference
+L'audio de validation n'est pas redistribue dans ce ZIP.

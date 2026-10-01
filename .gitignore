@@ -1,0 +1,30 @@
+# Build outputs
+build/
+out/
+cmake-build-*/
+*.user
+*.suo
+.vs/
+
+# vcpkg
+vcpkg_installed/
+
+# Models (downloaded via tools/download_models.ps1)
+models/*.onnx
+!models/README.md
+
+# yt-dlp binary
+/yt-dlp.exe
+
+# ONNX Runtime vendor leftovers (download archives / extracts)
+third_party/*.zip
+third_party/ort_extract/
+third_party/dml_extract/
+third_party/ort_dml_extract/
+
+# Temp / runtime
+*.log
+
+# IDE
+.idea/
+*.iml

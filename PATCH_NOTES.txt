@@ -1,0 +1,29 @@
+MusicSeparator - source compilation fixes
+
+Replace the matching files under C:\MusicSeparator with the files from this ZIP.
+
+Fixes included:
+1. ONNX Runtime:
+   - uses the complete C++ API type definitions in OnnxModel.h
+   - removes the invalid SetSessionLogSeverityLevel call
+   - DirectML uses dml_provider_factory.h when available
+   - DirectML session requirements: DisableMemPattern + ORT_SEQUENTIAL
+   - CUDA uses OrtCUDAProviderOptions instead of opaque OrtCUDAProviderOptionsV2
+   - Windows model path is passed using std::filesystem::path
+
+2. FFmpeg 9:
+   - replaces removed AVCodec::sample_fmts access with
+     avcodec_get_supported_config(... AV_CODEC_CONFIG_SAMPLE_FORMAT ...)
+
+3. YouTubeImporter:
+   - includes common/ErrorCodes.h so mc::ErrorCode is defined
+
+4. TrackCard:
+   - includes QSlider so the type is complete in TrackCard.cpp
+
+After replacing the files, run from the Visual Studio Developer Command Prompt:
+
+cd /d C:\MusicSeparator
+cmake --build build --config Release
+
+If MSBuild reports a new error, copy the new error lines only.
